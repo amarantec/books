@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	err := godotenv.Load("/home/mpac/go/src/picpay/env/.env")
+	err := godotenv.Load("../../env/.env")
 	if err != nil {
 		log.Fatalf("Error loading .env file: %v", err)
 	}

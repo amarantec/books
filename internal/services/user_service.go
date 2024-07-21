@@ -8,7 +8,7 @@ import (
 
 func (s Service) SaveUser(ctx context.Context, user models.User) (models.User, error) {
 	if user.Name == "" {
-		return models.User{}, ErrUserFirstNameEmpty
+		return models.User{}, ErrUserNameEmpty
 	}
 	if user.Email == "" {
 		return models.User{}, ErrUserEmailEmpty
