@@ -17,4 +17,10 @@ type Repository interface {
 	InsertCategory(ctx context.Context, category models.Category) (models.Category, error)
 	ListCategories(ctx context.Context) ([]models.Category, error)
 	DeleteCategory(ctx context.Context, id int64) error
+	InsertBook(ctx context.Context, book models.Book) (models.Book, error)
+	ListBooks(ctx context.Context) ([]models.Book, error)
+	GetBookById(ctx context.Context, id int64) (models.Book, error)
+	DeleteBook(ctx context.Context, id int64) error
+	UpdatateBook(ctx context.Context, id int64) error
+	SearchBook(ctx context.Context, searchQ string) ([]models.Book, error)
 }
