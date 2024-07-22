@@ -29,7 +29,7 @@ func (r *RepositoryPostgres) ValidateUserCredentials(ctx context.Context, user m
 
 	err := r.Conn.QueryRow(
 		ctx,
-		`SELECT id, first_name, last_name, document, password FROM users WHERE email=$1`, user.Email).Scan(&user.Id, &user.Name, &retriviedPassword)
+		`SELECT id, name, password FROM users WHERE email=$1`, user.Email).Scan(&user.Id, &user.Name, &retriviedPassword)
 	if err != nil {
 		return err
 	}
