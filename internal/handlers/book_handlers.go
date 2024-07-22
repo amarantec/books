@@ -17,7 +17,7 @@ func insertBook(w http.ResponseWriter, r *http.Request) {
 	var newBook models.Book
 
 	userId := r.Context().Value(middleware.UserIdKey).(int64)
-	newBook.UserId = userId
+	newBook.UserId = userId 
 
 	err := json.NewDecoder(r.Body).Decode(&newBook)
 	if err != nil {
