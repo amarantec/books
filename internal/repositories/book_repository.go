@@ -25,7 +25,7 @@ func (r *RepositoryPostgres) InsertBook (ctx context.Context, book models.Book) 
 func (r *RepositoryPostgres) ListBooks (ctx context.Context) ([]models.Book, error) {
 	rows, err := r.Conn.Query(
 		ctx,
-		`SELECT id, title, description, genre, author, category_id, user_id FROM categories`,)
+		`SELECT id, title, description, genre, author, category_id, user_id FROM books`,)
 		if err != nil {
 			return nil, err
 		}
@@ -58,7 +58,7 @@ func (r *RepositoryPostgres) GetBookById(ctx context.Context, id int64) (models.
 	
 	err := r.Conn.QueryRow(
 		ctx,
-		`SELECT title, description, genre, author, category_id, user_id WHERE id=$1`, id).Scan(
+		`SELECT title, description, genre, author, category_id, user_id FROM books WHERE id=$1`, id).Scan(
 			&book.Title, &book.Description, &book.Genre, &book.Author, &book.CategoryId, &book.UserId)
 
 		if err == pgx.ErrNoRows {
@@ -98,7 +98,7 @@ func (r *RepositoryPostgres) UpdatateBook(ctx context.Context, id int64) error {
 func (r *RepositoryPostgres) SearchBook(ctx context.Context, searchQ string) ([]models.Book, error) {
 	rows, err := r.Conn.Query(
 		ctx,
-		`SELECT id, title, description, genre, author, category_id, user_id WHERE title ILIKE '%' $1 || ´%´ OR description ILIKE '%' || '%';`,searchQ)
+		`SELECT id, title, description, genre, author, category_id, user_id FROM books WHERE title ILIKE '%' $1 || ´%´ OR description ILIKE '%' || '%';`,searchQ)
 
 		if err != nil {
 			return nil, err

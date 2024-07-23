@@ -168,7 +168,7 @@ func deleteBook(w http.ResponseWriter, r *http.Request) {
 		
 	if err = service.DeleteBook(ctxTimeout, int64(id)); err != nil {
 		if err == services.ErrBookNotFound {
-		http.Error(w, "book not found", http.StatusNotFound)
+			http.Error(w, "book not found", http.StatusNotFound)
 		}
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
