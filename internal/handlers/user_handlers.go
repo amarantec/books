@@ -49,7 +49,7 @@ func loginUser(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 
 
-	id, err = service.ValidateUserCredentials(ctxTimeout, user)
+	id, err := service.ValidateUserCredentials(ctxTimeout, user)
 	if err != nil {
 		log.Printf("Error: %v", err)
 		http.Error(w, "credentials invalid", http.StatusUnauthorized)
