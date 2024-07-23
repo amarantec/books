@@ -11,8 +11,8 @@ const secretKey = "superssecret"
 
 func GenerateToken(userId int64, email string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"email":  email,
 		"userId": userId,
+		"email":  email,
 		"expire": time.Now().Add(time.Hour * 2).Unix(),
 	})
 
@@ -23,7 +23,7 @@ func VerifyToken(token string) (int64, error) {
 	parsedToken, err := jwt.Parse(token, func(t *jwt.Token) (interface{}, error) {
 		_, ok := t.Method.(*jwt.SigningMethodHMAC)
 		if !ok {
-			return nil, errors.New("unexpected signing method")
+			return 0,"", errors.New("unexpected signing method")
 		}
 		return []byte(secretKey), nil
 	})

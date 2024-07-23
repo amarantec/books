@@ -48,16 +48,18 @@ func loginUser(w http.ResponseWriter, r *http.Request) {
 	ctxTimeout, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	err = service.ValidateUserCredentials(ctxTimeout, user)
+
+	id, err = service.ValidateUserCredentials(ctxTimeout, user)
 	if err != nil {
 		log.Printf("Error: %v", err)
 		http.Error(w, "credentials invalid", http.StatusUnauthorized)
 		return
 	}
 
+	user.Id = id
 	token, err := utils.GenerateToken(user.Id, user.Email)
 	if err != nil {
-		log.Printf("Error: %v", err)
+		log.Printf("error when generate token: %v", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

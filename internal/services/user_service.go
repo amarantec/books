@@ -20,12 +20,12 @@ func (s Service) SaveUser(ctx context.Context, user models.User) (models.User, e
 	return s.Repository.SaveUser(ctx, user)
 }
 
-func (s Service) ValidateUserCredentials(ctx context.Context, user models.User) error {
+func (s Service) ValidateUserCredentials(ctx context.Context, user models.User) (int64, error) {
 	if user.Email == "" {
-		return ErrUserEmailEmpty
+		return 0, ErrUserEmailEmpty
 	}
 	if user.Password == "" {
-		return ErrUserPasswordEmpty
+		return 0, ErrUserPasswordEmpty
 	}
 	return s.Repository.ValidateUserCredentials(ctx, user)
 }

@@ -18,7 +18,7 @@ func insertBook(w http.ResponseWriter, r *http.Request) {
 
 	userId := r.Context().Value(middleware.UserIdKey).(int64)
 	newBook.UserId = userId 
-
+	
 	err := json.NewDecoder(r.Body).Decode(&newBook)
 	if err != nil {
 		http.Error(w, "could not decode this book", http.StatusBadRequest)
