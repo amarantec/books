@@ -1,4 +1,4 @@
-export async function listBooks() {
+export async function fetchBooks() {
   try {
     const response = await fetch('/api/books');
     const books = await response.json();
