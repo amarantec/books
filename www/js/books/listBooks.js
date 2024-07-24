@@ -4,11 +4,11 @@ export async function listBooks() {
     const books = await response.json();
     const content = document.getElementById('content');
     
-    booksList.innerHTML = '<h2>List of Books</h2>';
+    content.innerHTML = '<h2>List of Books</h2>';
     books.forEach(book => {
       const bookElement = document.createElement('div');
       bookElement.innerHTML = `<h3>${book.title}</h3><p>${book.description}</p>`;
-      booksList.appendChild(bookElement);
+      content.appendChild(bookElement);
     });
   } catch (error) {
     console.error('error loading books:', error);

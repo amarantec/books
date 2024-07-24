@@ -6,7 +6,7 @@ const port = 3000;
 
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../html')));
 
 app.get('/api-books', async (req, res) => {
   try {
@@ -18,7 +18,7 @@ app.get('/api-books', async (req, res) => {
 });
 
 app.get('/books', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../html', 'books.html'));
 });
 
 
