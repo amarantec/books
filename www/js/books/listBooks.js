@@ -9,7 +9,7 @@ export async function fetchBooks() {
        throw new Error(response.statusText);
     }
   } catch (error) {
-    throw mew Error(error.message);
+    throw new Error(error.message);
   }
 }
 
