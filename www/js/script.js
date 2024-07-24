@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const books = await fetchBooks();
     displayBooks(books);
   } catch (error) {
-      const bookList = document.getElementById('content');
+      const booksList = document.getElementById('content');
       booksList.innerHTML = `<p>Failed to load books: ${error.message}</p>`
   }
 });
