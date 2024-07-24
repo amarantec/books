@@ -1,6 +1,6 @@
-document.getElementById('loadBooks').addEventListener('click', async () => {
+/*document.getElementById('loadBooks').addEventListener('click', async () => {
   try {
-    const response = await fetch('http://192.168.2.25:3000/books');
+    const response = await fetch('http://192.168.2.25:3000/api-books');
     const books = await response.json();
     const booksList = document.getElementById('booksList');
     booksList.innerHTML = '';
@@ -13,4 +13,8 @@ document.getElementById('loadBooks').addEventListener('click', async () => {
     console.error('Error loading books:', error);
   }
 });
+*/
 
+import { listBooks } from 'books/listBooks.js';
+
+document.getElementById('listBooksBtn').addEventListener('click', listBooks);
