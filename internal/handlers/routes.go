@@ -22,5 +22,5 @@ func SetRoutes() *http.ServeMux {
 	mux.HandleFunc("/search-books", searchBook)
 	mux.HandleFunc("/update-book/{id}", middleware.Authenticate(updateBook))
 	mux.HandleFunc("/delete-book/{id}", middleware.Authenticate(deleteBook))
-	return mux
+	return middleware.CorsMiddleware(mux)
 }
