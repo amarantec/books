@@ -12,7 +12,11 @@ input, textarea, button {
   margin-bottom: 10px;
 }
 
-#loadBooks {
-        background-color: red;
+#submitBtn{
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
 }
 

@@ -6,8 +6,10 @@ const port = 3000;
 
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../html')));
 
+app.use('/', express.static(path.join(__dirname, '../html')));
+app.use('/js', express.static(path.join(__dirname, '')));
+app.use('/css', express.static(path.join(__dirname, '../css')));
 app.get('/api-books', async (req, res) => {
   try {
     const response = await axios.get('http://192.168.2.22:8080/list-books');
