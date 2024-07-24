@@ -18,7 +18,7 @@ export function displayBooks(books) {
   bookList.innerHTML = '';
 
   if (books.length == 0) {
-    booksList.innerHTML = '<p>No books found.</p>';
+    bookList.innerHTML = '<p>No books found.</p>';
     return
   }
 
@@ -28,5 +28,5 @@ export function displayBooks(books) {
     li.textContent = `${book.title} by ${book.author.join(', ')}`;
     ul.appendChild(li);
   });
-  booksList.appendChild(ul);
+  bookList.appendChild(ul);
 }       
