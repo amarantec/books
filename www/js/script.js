@@ -1,7 +1,11 @@
-import { listBooks } from './books/listBooks.js';
+import { fetchBooks, displayBooks } from './books/listBooks.js';
 
-//document.getElementById('listBooksBtn').addEventListener('click', listBooks);
-
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('ok');
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const books = await fetchBooks();
+    displayBooks(books);
+  } catch (error) {
+      const bookList = document.getElementById('content');
+      booksList.innerHTML = `<p>Failed to load books: ${error.message}</p>`
+  }
 });

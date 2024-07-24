@@ -1,16 +1,32 @@
 export async function listBooks() {
   try {
-    const response = await fetch('http://192.168.2.22:8080/list-books');
+    const response = await fetch('/api/books');
     const books = await response.json();
-    const content = document.getElementById('content');
     
-    content.innerHTML = '<h2>List of Books</h2>';
-    books.forEach(book => {
-      const bookElement = document.createElement('div');
-      bookElement.innerHTML = `<h3>${book.title}</h3><p>${book.description}</p>`;
-      content.appendChild(bookElement);
-    });
+    if (response.ok) {
+      return books;
+    } else {
+       throw new Error(response.statusText);
+    }
   } catch (error) {
-    console.error('error loading books:', error);
+    throw mew Error(error.message);
   }
 }
+
+export function displayBooks(books) {
+  const bookList = document.getElementById('content');
+  bookList.innerHTML = '';
+
+  if (books.length == 0) {
+    booksList.innerHTML = '<p>No books found.</p>';
+    return
+  }
+
+  const ul = document.createElement('ul');
+  books.forEach(book => {
+    const li = document.createElement('li');
+    li.textContent = `${book.title} by ${book.author.join(', ')}`;
+    ul.appendChild(li);
+  });
+  booksList.appendChild(ul);
+}       
