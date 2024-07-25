@@ -17,7 +17,7 @@ export function showBook(book) {
   const bookInfo = document.getElementById('book-info');
   bookInfo.innerHTML = '';
 
-  const bookDetails `
+  const bookDetails =  `
     <h2>${book.title}</h2>
     <p><strong>Description:</strong>${book.description}</p>
     <p><strong>Author:</strong>${book.author}</p>
