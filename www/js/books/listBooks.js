@@ -27,7 +27,7 @@ function displayBooks(books) {
 
 document.addEventListener('DOMContentLoaded', () => {
   try {
-    const books = await fetchBooks();
+    const books = fetchBooks();
     displayBooks(books);
   } catch (e) {
       const bookList = document.getElementById('content');
