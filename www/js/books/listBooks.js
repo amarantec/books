@@ -1,9 +1,10 @@
 async function fetchBooks() {
     const response = await fetch('/api/books');
+    const books = await response.json();
     if (!response.ok) {
        throw new Error(response.statusText);
     }
-    return await response.json();
+    return books; 
 }
 
 function displayBooks(books) {
