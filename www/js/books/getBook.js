@@ -1,19 +1,23 @@
-export async function getBook() {
+document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const response = await fetch('/api/get-book');
-    const book = await response.json();
-
-    if (response.ok) {
-      return book;
-    } else {
-      throw new Error(response.statusText);
-    }
+    const book = await getBook();
+    showBook(book);
   } catch (e) {
-      throw new Error(e.message); 
+    const book = document.getElementById('book-info');
+    book.innerHTML = `<p>Failed to load book info: ${e.message}</p>`;
   }
+});
+
+async function getBookById(id) {
+  try {
+    const response = await fetch('/api/get-book/${id}');
+    if (!response.ok) {
+      throw new Error('book not found');
+    }
+    return await response.json();
 }
 
-export function showBook(book) {
+function showBook(book) {
   const bookInfo = document.getElementById('book-info');
   bookInfo.innerHTML = '';
 
