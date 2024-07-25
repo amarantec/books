@@ -14,7 +14,7 @@ app.use('/css', express.static(path.join(__dirname, '../css')));
 app.get('/api/books', async (req, res) => {
   try {
     const response = await axios.get('http://192.168.2.22:8080/list-books');
-    res.status(response.status).send(response.data);
+    res.json(response.data) 
   } catch (e) {
     res.status(e.response?.status || 500).send(e.message);
   }
@@ -23,7 +23,7 @@ app.get('/api/books', async (req, res) => {
 app.get('/api/book/:id', async (req, res) => {
   try {
     const response = await axios.get(`http://192.168.2.22:8080/get-book/${req.params.id}`);
-    res.status(response.status).send(response.data);
+    res.json(response.data);
   } catch (e) {
       res.status(e.response?.status || 500).send(e.message);
   }

@@ -1,13 +1,19 @@
-async function getBookById(id) {
+async function fetchBook(id) {
   try {
-    const response = await fetch('/api/get-book/${id}');
-    if (!response.ok) {
-      throw new Error('book not found');
+    const response = await fetch(`/api/get-book/${id}`);
+    const book = await response.json();
+    if (response.ok) {
+      return book;
+    } else {
+        throw new Error(response.statusText); 
     }
-    return await response.json();
+  } catch (e) {
+     throw new Error(e.message);
+  }
 }
 
-function showBook(book) {
+
+function displayBook(book) {
   const bookInfo = document.getElementById('book-info');
   bookInfo.innerHTML = '';
 
@@ -21,9 +27,10 @@ function showBook(book) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const id = window.location.pathname.split('/').pop();
   try {
-    const book = await getBookById();
-    showBook(book);
+    const book = await fetchBook(id);
+    displayBook(book);
   } catch (e) {
     const book = document.getElementById('book-info');
     book.innerHTML = `<p>Failed to load book info: ${e.message}</p>`;
