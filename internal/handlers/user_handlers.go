@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/amarantec/picpay/internal/models"
-	"github.com/amarantec/picpay/internal/utils"
+	"github.com/amarantec/books/internal/models"
+	"github.com/amarantec/books/internal/utils"
 )
 
 func signupUser(w http.ResponseWriter, r *http.Request) {

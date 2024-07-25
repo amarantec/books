@@ -3,10 +3,10 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/amarantec/picpay/internal/middleware"
+	"github.com/amarantec/books/internal/middleware"
 )
 
-func SetRoutes() *http.ServeMux {
+func SetRoutes() http.Handler {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/user-signup", signupUser)

@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/amarantec/picpay/internal/models"
+	"github.com/amarantec/books/internal/models"
 )
 
 func (s Service) InsertBook(ctx context.Context, book models.Book) (models.Book, error) {
@@ -20,6 +20,9 @@ func (s Service) InsertBook(ctx context.Context, book models.Book) (models.Book,
 	if book.Author == nil {
 		return models.Book{}, ErrBookAuthorEmpty
 	}
+  if book.ImageURL == "" {
+    return models.Books{}, ErrBookImageEmpty
+  }
 	if book.CategoryId == 0 {
 		return models.Book{}, ErrBookCategoryIdEmpty
 	}

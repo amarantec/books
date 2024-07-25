@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 
-	"github.com/amarantec/picpay/internal/models"
+	"github.com/amarantec/books/internal/models"
 )
 
 func (s Service) SaveUser(ctx context.Context, user models.User) (models.User, error) {

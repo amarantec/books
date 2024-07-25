@@ -8,7 +8,7 @@ import (
 
 	"net/http"
 
-	"github.com/amarantec/picpay/internal/models"
+	"github.com/amarantec/books/internal/models"
 )
 
 func inserCategory(w http.ResponseWriter, r *http.Request) {

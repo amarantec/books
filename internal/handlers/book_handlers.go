@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/amarantec/picpay/internal/middleware"
-	"github.com/amarantec/picpay/internal/models"
-	"github.com/amarantec/picpay/internal/services"
+	"github.com/amarantec/books/internal/middleware"
+	"github.com/amarantec/books/internal/models"
+	"github.com/amarantec/books/internal/services"
 )
 
 func insertBook(w http.ResponseWriter, r *http.Request) {
@@ -173,6 +173,5 @@ func deleteBook(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
 }
 

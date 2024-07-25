@@ -1,4 +1,4 @@
-module github.com/amarantec/picpay
+module github.com/amarantec/books
 
 go 1.22.5
 

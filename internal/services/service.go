@@ -3,7 +3,7 @@ package services
 import (
 	"errors"
 
-	"github.com/amarantec/picpay/internal/repositories"
+	"github.com/amarantec/books/internal/repositories"
 )
 
 type Service struct {
@@ -20,4 +20,5 @@ var ErrBookDescriptionEmpty = errors.New("book description is empty")
 var ErrBookGenreEmpty = errors.New("book genre is empty")
 var ErrBookAuthorEmpty = errors.New("book author is empty")
 var ErrBookCategoryIdEmpty = errors.New("book category id is empty")
+var ErrBookImageEmpty = errors.New("book image is empty")
 var ErrBookNotFound = errors.New("book not found")

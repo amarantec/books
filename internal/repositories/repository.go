@@ -3,7 +3,7 @@ package repositories
 import (
 	"context"
 
-	"github.com/amarantec/picpay/internal/models"
+	"github.com/amarantec/books/internal/models"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 

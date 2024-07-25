@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/amarantec/picpay/internal/models"
+	"github.com/amarantec/books/internal/models"
 )
 
 func (r *RepositoryPostgres) InsertCategory(ctx context.Context, category models.Category) (models.Category, error) {

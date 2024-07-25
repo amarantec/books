@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"github.com/amarantec/picpay/internal/database"
-	"github.com/amarantec/picpay/internal/repositories"
-	"github.com/amarantec/picpay/internal/services"
+	"github.com/amarantec/books/internal/database"
+	"github.com/amarantec/books/internal/repositories"
+	"github.com/amarantec/books/internal/services"
 )
 
 var service services.Service

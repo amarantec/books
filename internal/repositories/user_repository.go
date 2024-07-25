@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	"github.com/amarantec/picpay/internal/models"
-	"github.com/amarantec/picpay/internal/utils"
+	"github.com/amarantec/books/internal/models"
+	"github.com/amarantec/books/internal/utils"
 )
 
 func (r *RepositoryPostgres) SaveUser(ctx context.Context, user models.User) (models.User, error) {
