@@ -1,15 +1,11 @@
 async function fetchBook(id) {
-  try {
     const response = await fetch(`/api/get-book/${id}`);
-    const book = await response.json();
-    if (response.ok) {
-      return book;
-    } else {
-        throw new Error(response.statusText); 
-    }
-  } catch (e) {
-     throw new Error(e.message);
+
+    if (!response.ok) {
+      throw new Error("could not fetch");
   }
+
+    return  await response.json();
 }
 
 
