@@ -8,8 +8,8 @@ export async function fetchBooks() {
     } else {
        throw new Error(response.statusText);
     }
-  } catch (error) {
-    throw new Error(error.message);
+  } catch (e) {
+    throw new Error(e.message);
   }
 }
 
