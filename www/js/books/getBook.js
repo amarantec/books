@@ -1,13 +1,3 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const book = await getBook();
-    showBook(book);
-  } catch (e) {
-    const book = document.getElementById('book-info');
-    book.innerHTML = `<p>Failed to load book info: ${e.message}</p>`;
-  }
-});
-
 async function getBookById(id) {
   try {
     const response = await fetch('/api/get-book/${id}');
@@ -29,3 +19,14 @@ function showBook(book) {
   `; 
     bookInfo.innerHTML = bookDetails; 
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const book = await getBookById();
+    showBook(book);
+  } catch (e) {
+    const book = document.getElementById('book-info');
+    book.innerHTML = `<p>Failed to load book info: ${e.message}</p>`;
+  }
+});
+
