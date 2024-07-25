@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/amarantec/picpay/internal/database"
-	"github.com/amarantec/picpay/internal/handlers"
+	"github.com/amarantec/books/internal/database"
+	"github.com/amarantec/books/internal/handlers"
 	"github.com/joho/godotenv"
 )
 
