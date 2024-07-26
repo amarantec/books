@@ -2,8 +2,6 @@ package services
 
 import (
 	"context"
-	"errors"
-
 	"github.com/amarantec/books/internal/models"
 )
 
@@ -21,7 +19,7 @@ func (s Service) InsertBook(ctx context.Context, book models.Book) (models.Book,
 		return models.Book{}, ErrBookAuthorEmpty
 	}
   if book.ImageURL == "" {
-    return models.Books{}, ErrBookImageEmpty
+    return models.Book{}, ErrBookImageEmpty
   }
 	if book.CategoryId == 0 {
 		return models.Book{}, ErrBookCategoryIdEmpty
