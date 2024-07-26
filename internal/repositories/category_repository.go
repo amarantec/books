@@ -57,3 +57,14 @@ func (r *RepositoryPostgres) DeleteCategory(ctx context.Context, id int64) error
 		}
 	return err
 }
+
+func (r *RepositoryPostgres) UpdateCategory(ctx context.Context, id int64) error {
+  var category = models.Category{Id: id}
+  _, err := r.Conn.Exec(
+    ctx,
+    `UPDATE categories SET name = $2, url = $3 WHERE id = $1`, id, &category.Name, &category.Url)
+  if err != nil {
+    return err
+  }
+  return nil
+}

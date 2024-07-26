@@ -28,3 +28,7 @@ func (s Service) ListCategories(ctx context.Context) ([]models.Category, error) 
 func (s Service) DeleteCategory(ctx context.Context, id int64) error {
 	return s.Repository.DeleteCategory(ctx, id)
 }
+
+func (s Service) UpdateCategory(ctx context.Context, id int64) error {
+  return s.Repository.UpdateCategory(ctx, id)
+}

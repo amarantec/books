@@ -14,7 +14,7 @@ func SetRoutes() http.Handler {
 	mux.HandleFunc("/insert-category", inserCategory)
 	mux.HandleFunc("/list-categories", listCategories)
 	mux.HandleFunc("/delete-category", deleteCategory)
-	
+  mux.HandleFunc("/update-category", updateCategory)	
 
 	mux.HandleFunc("/insert-book", middleware.Authenticate(insertBook))
 	mux.HandleFunc("/list-books", listBooks)

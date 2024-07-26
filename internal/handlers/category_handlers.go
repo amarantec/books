@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"strconv"
 	"time"
-
+  "fmt"
 	"net/http"
 
 	"github.com/amarantec/books/internal/models"
@@ -81,4 +81,32 @@ func deleteCategory(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusNoContent)
+}
+
+func updateCategory(w http.ResponseWriter, r *http.Request) {
+  idStr := r.URL.Path[len("/update-category/"):]
+  id, err := strconv.Atoi(idStr)
+  if err != nil {
+    http.Error(w, "invalid id", http.StatusBadRequest)
+    return
+  }
+  
+  var uCategory models.Category
+  
+  err = json.NewDecoder(r.Body).Decode(&uCategory)
+  if err != nil {
+    http.Error(w, "could not parse this category", http.StatusBadRequest)
+    return
+  }
+  ctxTimeout, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+  defer cancel()
+
+  if err := service.UpdateCategory(ctxTimeout, int64(id)); err != nil {
+      http.Error(w, "could not update this category", http.StatusInternalServerError)
+      return
+  }
+
+  w.Header().Set("Content-Type", "application/json")
+  w.WriteHeader(http.StatusOK)
+  w.Write([]byte(fmt.Sprintf("category %d updated", id)))
 }
