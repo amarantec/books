@@ -3,17 +3,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Manager Login</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <form>
-    <label for="uemail">Email</label><br>
-    <input type="text" id="uemail" name="uemail" placeholder="usuário@exemplo.com" required><br> 
-    <label for"upassword">Password</label>
-    <input type="text" id="upassword" name="upassword" placeholder="senha" required><br>
-    <br><br>
-    <input type="submit" value="Login" id="submitBtn">
-  </form>
-  <script type="module" src="js/script.js"></script>
+  <div class="welcome-signup"> 
+    <h2>Fazer login</h2>
+
+  </div>
+  <div class="signup-form">
+    <form>
+      <label for="uemail">Email</label><br>
+      <input type="text" id="uemail" name="uemail" placeholder="usuário@exemplo.com" size="30" required> 
+      <label for"upassword">Senha</label>
+      <input type="text" id="upassword" name="upassword" placeholder="senha" size="30" required>
+     <input type="submit" value="Login" id="submitBtn">
+    <p>Não possui uma conta? <a href="./signup.html">Criar conta</a></p>
+    </form>
+  </div>
+  <script type="module" src="js/users/login.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@ func (s Service) InsertBook(ctx context.Context, book models.Book) (models.Book,
 		return models.Book{}, ErrBookCategoryIdEmpty
 	}
 	if book.UserId == 0 {
-		return models.Book{}, errors.New("book user id is empty")
+		return models.Book{}, ErrBookUserIdEmpty 
 	}
 	return s.Repository.InsertBook(ctx, book)
 }

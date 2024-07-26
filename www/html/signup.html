@@ -3,19 +3,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Manager Sign Up</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <form>
-    <label for="uname">User name:</label><br>
-    <input type="text" id="uname" name="uname" placeholder="usuário123" required><br>
-    <label for="uemail">Email:</label><br>
-    <input type="text" id="uemail" name="uemail" placeholder="usuário@examplo.com" required><br>
-    <label for="upassword">Password:</label><br>
-    <input type="password" id="upassword" name="upassword" placeholder="senha" required><br>
-    <br><br>
+  <div class="welcome-signup">
+    <h2>Crie sua conta</h2>
+  </div>
+  <div class="signup-form">
+    <form>
+      <label for="uname">Nome do usuário</label>
+      <input type="text" id="uname" name="uname" placeholder="usuário123" size="30" required>
+      <label for="uemail">Email</label>
+      <input type="text" id="uemail" name="uemail" placeholder="usuário@exemplo.com" size="30" required>
+      <label for="upassword">Senha</label>
+      <input type="password" id="upassword" name="upassword" placeholder="senha" size="30" required>
     <input type="submit" value="Sign up" id="submitBtn">
+    <p>Já possui uma conta? <a href="./login.html">Fazer login</a></p>
   </form>
-  <script type="module" src="js/script.js"></script>
+  </div>
+  <script type="module" src="../js/users/signup.js"></script>
 </body>
 </html>

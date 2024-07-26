@@ -18,5 +18,52 @@ input, textarea, button {
   border-radius: 4px;
   color: white;
   text-decoration: none;
+  height: 40px;
+  width: 231px;
+  align-items: center;
 }
 
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.welcome-signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 { font-weight: normal; }
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.logo {
+  margin-right: 20px;
+}
+
+.search-container {
+  flex-grow: 1;
+  margin-right: 20px;
+} 
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px; 
+}
+
+.auth-links {
+  display: flex;
+  gap: 10px;
+} 

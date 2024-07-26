@@ -1,15 +1,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Manager</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <h1>Book Manager</h1>
-  <nav>
+  <div class="header">
+    <div class= "logo">
+      <a href="./index.html">FreeBook Manager</a>
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder="procurar livros...">
+    </div>
+    <div class="auth-links">
+      <a href="./login.html">Login</a>
+      <a href="./signup.html">Sign up</a>
+    </div> 
+  </div>
     <button id="listBooksBtn">List Books</button>
-  </nav>
   <div id="content"></div>
   <script type="module" src="js/script.js"></script>
 </body>
