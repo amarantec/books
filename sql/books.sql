@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS categories (
-  id    serial primary key;
-  name  text not null;
+  id    serial primary key,
+  name  text not null,
   url   text not null
 );
 
