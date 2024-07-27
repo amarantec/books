@@ -24,6 +24,7 @@ app.get('/api/books', async (req, res) => {
 app.get('/books', (req, res) => {
   res.sendFile(path.join(__dirname, '../html', 'books.html'));
 });
+
 // GET by Id
 app.get('/api/book/:id', async (req, res) => {
   try {
@@ -42,7 +43,7 @@ app.get('/book/:id', (req, res) => {
 app.post('/api/user-signup', async (req, res) => {
    try {
       const { name, email, password } = req.body;
-      const response = await axios.post('http://192.168.2.22:8080/user-signup', { name, email, password }
+      const response = await axios.post('http://192.168.2.22:8080/user-signup', { name, email, password });
     } catch (e) {
         res.status(e.response?.status || 500).send(e.message);
     }
@@ -57,7 +58,7 @@ app.get('/user-signup', (req, res) => {
 app.post('/api/user-login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const response = await axios.post('http://192.168.2.22:8080/user-login', { email, password }
+    const response = await axios.post('http://192.168.2.22:8080/user-login', { email, password });
   } catch (e) {
       res.status(e.response?.status || 500).send(e.message)
   }
