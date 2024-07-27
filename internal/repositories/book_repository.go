@@ -11,8 +11,8 @@ import (
 func (r *RepositoryPostgres) InsertBook (ctx context.Context, book models.Book) (models.Book, error) {
 	err := r.Conn.QueryRow(
 		ctx,
-		`INSERT INTO books (title, description, genre, author, image_url, category_id, user_id) VALUES ($1, $2, $3, $4, $5, $6)
-		 RETURNING id, title, description, genre, author, category_id, user_id`, book.Title, book.Description, book.Genre, book.Author, book.ImageURL, book.CategoryId, book.UserId).Scan(
+		`INSERT INTO books (title, description, genre, author, image_url, category_id, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7)
+		 RETURNING id, title, description, genre, author, image_url,  category_id, user_id`, book.Title, book.Description, book.Genre, book.Author, book.ImageURL, book.CategoryId, book.UserId).Scan(
 			&book.Id, &book.Title, &book.Description, &book.Genre, &book.Author, &book.ImageURL, &book.CategoryId, &book.UserId)
 
 			if err != nil {
