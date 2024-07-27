@@ -4,9 +4,13 @@ async function fetchBooks() {
 		const books = await response.json();
 		
 		if (response.ok) {
-			return books;
+			if (Array.isArray(books)) {
+				return books;
+			} else {
+					throw new Error(`Unexpected response format: Expected an array.');
+			}
 		} else {
-				throw new Error(response.statusText);
+				throw new Error(response.statusText);	
 		}
 	} catch (e) {
 			throw new Error(e.message);	
@@ -20,7 +24,7 @@ function displayBooks(books) {
 
   if (books.length === 0) {
     bookList.innerHTML = '<p>No books found.</p>';
-    return
+    return;
   }
 
   const ul = document.createElement('ul');
