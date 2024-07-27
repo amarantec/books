@@ -1,17 +1,24 @@
 async function fetchBooks() {
-    const response = await fetch('/api/books');
-    const books = await response.json();
-    if (!response.ok) {
-       throw new Error(response.statusText);
-    }
-    return books; 
+	try {
+		const response = await fetch('/api/books');
+		const books = await response.json();
+		
+		if (response.ok) {
+			return books;
+		} else {
+				throw new Error(response.statusText);
+		}
+	} catch (e) {
+			throw new Error(e.message);	
+	}
 }
 
+
 function displayBooks(books) {
-  const bookList = document.getElementById('content');
+  const bookList = document.getElementById('book-list');
   bookList.innerHTML = '';
 
-  if (books.length == 0) {
+  if (books.length === 0) {
     bookList.innerHTML = '<p>No books found.</p>';
     return
   }
@@ -24,8 +31,8 @@ function displayBooks(books) {
   });
   bookList.appendChild(ul);
 }       
-
-document.addEventListener('DOMContentLoaded', () => {
+	
+document.addEventListener('DOMContentLoaded', async () => {
   try {
     const books = fetchBooks();
     displayBooks(books);
