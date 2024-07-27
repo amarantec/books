@@ -1,4 +1,4 @@
-document.getElementById('login-form').addEventListener('submit', async (event) => {
+document.getElementById('submitBtn').addEventListener('submit', async (event) => {
 	event.preventDefault(); // Evita o envio padrão do formulário
 
 	const email = document.getElementById('email').value;
