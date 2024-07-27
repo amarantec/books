@@ -30,7 +30,9 @@ function displayBooks(books) {
   const ul = document.createElement('ul');
 	books.forEach(book => {
 		const li = document.createElement('li');
-		li.textContent = `${book.title} by ${book.author.join(', ')}`;
+		const title = book.title || 'No title';
+		const authors = Array.isArray(book.author) ? book.author.join(', '): 'Unknown author';
+		li.textContent = `${title} by ${author}`; 
 		ul.appendChild(li);
 	});
   bookList.appendChild(ul);
