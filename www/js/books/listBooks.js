@@ -24,11 +24,11 @@ function displayBooks(books) {
   }
 
   const ul = document.createElement('ul');
-  books.forEach(book => {
-    const li = document.createElement('li');
-    li.textContent = `${book.title} by ${book.author.join(', ')}`;
-    ul.appendChild(li);
-  });
+	books.forEach(book => {
+		const li = document.createElement('li');
+		li.textContent = `${book.title} by ${book.author.join(', ')}`;
+		ul.appendChild(li);
+	});
   bookList.appendChild(ul);
 }       
 	
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const books = fetchBooks();
     displayBooks(books);
   } catch (e) {
-      const bookList = document.getElementById('content');
+      const bookList = document.getElementById('book-list');
       bookList.innerHTML = `<p>Failed to load books: ${e.message}</p>`;
   }
 });

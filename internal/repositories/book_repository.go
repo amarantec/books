@@ -39,8 +39,8 @@ func (r *RepositoryPostgres) ListBooks (ctx context.Context) ([]models.Book, err
 				&book.Title,
 				&book.Description,
 				&book.Genre,
-        &book.ImageURL,
 				&book.Author,
+        			&book.ImageURL,
 				&book.CategoryId,
 				&book.UserId); err != nil {
 					return nil, err
