@@ -14,6 +14,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
 		});
 		
 		if (response.ok) {
+			console.log("login successfull")
 			const data = await response.json();
 			localStorage.setItem('authToken', data.token);
 			window.location.href = '/';
