@@ -116,6 +116,27 @@ func searchBook(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResp)
 }
 
+func findBookByCategory(w http.ResponseWriter, r *http.Request) {
+	categoryUrl := r.URL.Path[len("/books-category/"):]
+	ctxTimeout, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	books, err := service.FindBookByCategory(ctxTimeout, categoryUrl)
+	if err != nil {
+		http.Error(w, "could not find books", http.StatusInternalServerError)
+		return
+	}
+	
+	jsonResp, err := json.MarshalIndent(books, "", " ")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(jsonResp)
+}
 
 func updateBook(w http.ResponseWriter, r *http.Request) {
 	idStr := r.URL.Path[len("/update-book/"):]

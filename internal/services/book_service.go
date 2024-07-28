@@ -69,3 +69,11 @@ func (s Service) SearchBook(ctx context.Context, searchQ string) ([]models.Book,
 	}
 	return books, nil
 }
+
+func (s Service) FindBookByCategory(ctx context.Context, categoryUrl string) ([]models.Book, error) {
+	books, err := s.Repository.FindBookByCategory(ctx, categoryUrl)
+	if err != nil {
+		return nil, err
+	}
+	return books, nil
+} 

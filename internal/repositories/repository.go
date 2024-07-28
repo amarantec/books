@@ -24,4 +24,5 @@ type Repository interface {
 	DeleteBook(ctx context.Context, id int64) error
 	UpdatateBook(ctx context.Context, id int64) error
 	SearchBook(ctx context.Context, searchQ string) ([]models.Book, error)
+	FindBookByCategory(ctx context.Context, categoryUrl string) ([]models.Book, error)	
 }
