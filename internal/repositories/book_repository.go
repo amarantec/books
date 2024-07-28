@@ -91,7 +91,7 @@ func (r *RepositoryPostgres) GetBookById(ctx context.Context, id int64) (models.
 						 b.author,
 						 b.image_url,
 						 b.category_id,
-						 b.user_id
+						 b.user_id,
 						 c.id,
 						 c.name,
 						 c.url
