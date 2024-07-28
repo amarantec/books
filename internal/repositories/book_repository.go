@@ -230,7 +230,7 @@ func (r *RepositoryPostgres) FindBookByCategory(ctx context.Context, categoryUrl
 			&book.Genre,
 			&book.Author,
 			&book.ImageURL,
-			&book.CategoryId
+			&book.CategoryId,
 			&book.UserId,
 			&category.Id,
 			&category.Name,
