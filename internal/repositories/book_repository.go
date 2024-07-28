@@ -196,7 +196,7 @@ func (r *RepositoryPostgres) SearchBook(ctx context.Context, searchQ string) ([]
 }
 
 func (r *RepositoryPostgres) FindBookByCategory(ctx context.Context, categoryUrl string) ([]models.Book, error) {
-	rows, err := r.Conn.QueryRow(
+	rows, err := r.Conn.Query(
 		ctx,
 		`SELECT b.id,
 						b.title,
