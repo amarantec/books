@@ -41,7 +41,7 @@ func (r *RepositoryPostgres) ListBooks (ctx context.Context) ([]models.Book, err
 						b.author,
 						b.image_url,
 						b.category_id,
-						b.user_id
+						b.user_id,
 						c.id,
 						c.name,
 						c.url
@@ -85,8 +85,7 @@ func (r *RepositoryPostgres) GetBookById(ctx context.Context, id int64) (models.
 	var category models.Category	
 	err := r.Conn.QueryRow(
 		ctx,
-		`SELECT b.id, 
-						 b.title, 
+		`SELECT	 b.title, 
 						 b.description, 
 					 	 b.genre,
 						 b.author,
