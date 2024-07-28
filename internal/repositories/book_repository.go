@@ -85,7 +85,7 @@ func (r *RepositoryPostgres) GetBookById(ctx context.Context, id int64) (models.
 	var category models.Category	
 	err := r.Conn.QueryRow(
 		ctx,
-		``SELECT b.id, 
+		`SELECT b.id, 
 						 b.title, 
 						 b.description, 
 					 	 b.genre,
