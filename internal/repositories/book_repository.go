@@ -158,10 +158,11 @@ func (r *RepositoryPostgres) SearchBook(ctx context.Context, searchQ string) ([]
 					  b.user_id,
 						c.id,
 						c.name,
-						c.url,
+						c.url
 					  FROM books AS b 
 						JOIN categories AS c ON b.category_id = c.id
-						WHERE title ILIKE '%' $1 || ´%´ OR description ILIKE '%' || '%';`, searchQ)
+						WHERE title ILIKE '%' || $1 || '%' OR
+					  description ILIKE '%' || $1 || '%';`, searchQ)
 
 
 		if err != nil {
