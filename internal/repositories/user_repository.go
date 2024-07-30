@@ -16,8 +16,8 @@ func (r *RepositoryPostgres) SaveUser(ctx context.Context, user models.User) (mo
 
 	err = r.Conn.QueryRow(
 		ctx,
-		`INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id, name, email`,
-		user.Name, user.Email, hashedPassword).Scan(&user.Id, &user.Name, &user.Email)
+		`INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id;`,
+		user.Name, user.Email, hashedPassword).Scan(&user.Id)
 	if err != nil {
 		return models.User{}, err
 	}

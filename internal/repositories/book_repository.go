@@ -13,22 +13,13 @@ func (r *RepositoryPostgres) InsertBook (ctx context.Context, book models.Book) 
 		ctx,
 		`INSERT INTO books (title, description, genre, author, image_url, category_id, user_id) 
 		 VALUES ($1, $2, $3, $4, $5, $6, $7)
-		 RETURNING id, title, description, genre, author, image_url,  category_id, user_id;`,
-		 book.Title, book.Description, book.Genre, book.Author, book.ImageURL, book.CategoryId, book.UserId)						.Scan(
-			&book.Id,
-			&book.Title,
-			&book.Description,
-			&book.Genre,
-		  &book.Author,
-		  &book.ImageURL,
-			&book.CategoryId,
-			&book.UserId)
+		 RETURNING id;`,
+		 book.Title, book.Description, book.Genre, book.Author, book.ImageURL, book.CategoryId, book.UserId).Scan(&book.Id)
+	if err != nil {
+		return models.Book{}, err
+	}
 
-			if err != nil {
-				return models.Book{}, err
-			}
-
-			return book, nil
+	return book, nil
 }
 
 func (r *RepositoryPostgres) ListBooks (ctx context.Context) ([]models.Book, error) {
