@@ -168,7 +168,6 @@ func updateBook(w http.ResponseWriter, r *http.Request) {
 	
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(fmt.Sprintf("Book %d updated", id)))
 	
 }
 
@@ -194,5 +193,7 @@ func deleteBook(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+  w.Header().Set("Content-Type", "applciation/json")
+  w.WriteHeader(http.StatusNoContent)
 }
 

@@ -1,0 +1,30 @@
+services:
+  postgres_db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: mpac
+      POSTGRES_PASSWORD: 0987
+      POSTGRES_DB: books_db
+    ports:
+     - "5432:5432"
+    volumes:
+     - postgres_data:/var/lib/postgresql/data
+
+  server:
+    build:
+      context: .
+    container_name: go_server
+    depends_on:
+      - postgres_db
+    ports:
+     - "${SERVER_PORT}:${SERVER_PORT}" 
+    environment:
+      SERVER_PORT: 8080 
+      DB_HOST: postgres_db 
+      DB_PORT: 5432 
+      DB_USER: mpac 
+      DB_PASSWORD: 0987
+      DB_NAME: books_db 
+volumes:
+  postgres_data:

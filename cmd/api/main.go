@@ -9,14 +9,9 @@ import (
 
 	"github.com/amarantec/books/internal/database"
 	"github.com/amarantec/books/internal/handlers"
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	err := godotenv.Load("../../env/.env")
-	if err != nil {
-		log.Fatalf("Error loading .env file: %v", err)
-	}
 	ctx := context.Background()
 
 	serverPort := os.Getenv("SERVER_PORT")
@@ -47,6 +42,6 @@ func main() {
 		Handler: mux,
 	}
 
-	fmt.Printf("Server listen on: http://192.168.2.22%s\n", server.Addr)
+	fmt.Printf("Server listen on: http://localhost\n", server.Addr)
 	log.Fatal(server.ListenAndServe())
 }
