@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"strconv"
 	"time"
-  "fmt"
 	"net/http"
 
 	"github.com/amarantec/books/internal/models"
