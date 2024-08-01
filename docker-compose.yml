@@ -3,11 +3,11 @@ services:
     image: docker.io/library/postgres:13
     container_name: postgres_db
     environment:
-      POSTGRES_USER: mpac
-      POSTGRES_PASSWORD: 0987
-      POSTGRES_DB: books_db
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD} 
+      POSTGRES_DB: ${DB_NAME} 
     ports:
-     - "5432:5432"
+     - "${DB_PORT}:{DB_PORT}" 
     volumes:
      - postgres_data:/var/lib/postgresql/data
 
@@ -20,11 +20,10 @@ services:
     ports:
      - "${SERVER_PORT}:${SERVER_PORT}" 
     environment:
-      SERVER_PORT: 8080 
-      DB_HOST: postgres_db 
-      DB_PORT: 5432 
-      DB_USER: mpac 
-      DB_PASSWORD: 0987
-      DB_NAME: books_db 
+      SERVER_PORT: ${SERVER_PORT} 
+      DB_HOST: ${DB_HOST} 
+      DB_USER: ${DB_USER} 
+      DB_PASSWORD: ${DB_PASSWORD} 
+      DB_NAME: ${DB_NAME} 
 volumes:
   postgres_data:
