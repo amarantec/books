@@ -9,5 +9,4 @@ COPY . .
 
 RUN go build -o app cmd/api/main.go
 
-EXPOSE ${SERVER_PORT}
 CMD ["./app"]
